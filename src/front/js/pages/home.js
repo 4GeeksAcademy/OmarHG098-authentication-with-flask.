@@ -1,39 +1,49 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
+  const [ email, setEmail ] = useState("");
+  const [ password, setPassword ] = useState("");
+  const handleSubmit = (e) => {
+      e.preventDefault()
+      console.log(email, password)
+  }
 
   return (
     <>
       <div className="container mx-3 text-center">
-        <div className="form-group">
-          <label for="exampleInputEmail1">Email address</label>
+        <form className="form-group" onSubmit={handleSubmit}>
+          <label htmlFor="InputEmail">Email address</label>
           <input
             type="email"
             className="form-control"
-            id="exampleInputEmail1"
+            id="InputEmail"
+            value={email}
             aria-describedby="emailHelp"
             placeholder="Enter email"
+            onChange={(e) => setEmail(e.target.value)} 
           />
           <small id="emailHelp" className="form-text text-muted">
             We'll never share your email with anyone else.
           </small>
-        </div>
         <div className="form-group">
-          <label for="exampleInputPassword1">Password</label>
+          <label htmlFor="InputPassword">Password</label>
           <input
             type="password"
             className="form-control"
-            id="exampleInputPassword1"
+            id="InputPassword"
+            value={password}
             placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <button type="submit" className="btn btn-primary">
           Signup
         </button>
+        </form>
       </div>
       <div className="text-center mt-5">
         <div className="alert alert-info">{store.message}</div>
