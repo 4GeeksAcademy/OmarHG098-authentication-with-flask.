@@ -7,14 +7,15 @@ export const Home = () => {
   const { store, actions } = useContext(Context);
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
       e.preventDefault()
-      console.log(email, password)
-  }
+      const response = await actions.register(email, password)
+      console.log(response)
+    }
 
   return (
     <>
-      <div className="container mx-3 text-center">
+      <div className="container mx-3 gap">
         <form className="form-group" onSubmit={handleSubmit}>
           <label htmlFor="InputEmail">Email address</label>
           <input
