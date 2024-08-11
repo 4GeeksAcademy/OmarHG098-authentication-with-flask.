@@ -37,10 +37,16 @@ const getState = ({ getStore, getActions, setStore }) => {
             return false;
           }
           const data = await response.json();
+          localStorage.setItem("token", data.token);
           console.log(data);
+          return true;
         } catch (error) {
           console.log(error);
         }
+      },
+
+    logout: () => {
+        localStorage.removeItem("token");
       },
     },
   };
