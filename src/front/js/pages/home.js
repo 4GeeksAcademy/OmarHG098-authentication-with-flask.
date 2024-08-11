@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -16,6 +16,7 @@ export const Home = () => {
   return (
     <>
       <div className="container mx-3 gap">
+        <h2>Register</h2>
         <form className="form-group" onSubmit={handleSubmit}>
           <label htmlFor="InputEmail">Email address</label>
           <input
@@ -46,14 +47,10 @@ export const Home = () => {
         </button>
         </form>
       </div>
-      <div className="text-center mt-5">
-        <div className="alert alert-info">{store.message}</div>
-        <p>
-          This boilerplate comes with lots of documentation:{" "}
-          <a href="https://start.4geeksacademy.com/starters/react-flask">
-            Read documentation
-          </a>
-        </p>
+      <div className="m-2">
+        <Link to="/login">
+          Login
+        </Link>
       </div>
     </>
   );
