@@ -7,12 +7,6 @@ const Private = () => {
   const [content, setContent] = useState("");
   const { store, actions } = useContext(Context);
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    // const data = await actions.createPost(content);
-    actions.getPosts();
- }
-
   function logout() {
     actions.logout();
     navigate("/login");
@@ -29,32 +23,16 @@ const Private = () => {
   return (
     <div className="card">
       <div className="card-body d-flex">
+      <h2>This is a cool photo only I can see</h2>
         <div className="ms-auto">
+          
           <button onClick={logout} className="btn btn-primary">
             logout
           </button>
         </div>
       </div>
-      <div>
-        <div className="m-3">
-          <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label htmlFor="exampleInputEmail1" className="form-label">
-                Contenido
-              </label>
-              <textarea
-                className="form-control"
-                placeholder="contenido"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-              ></textarea>
-            </div>
-            <button type="submit" className="btn btn-primary">
-              Submit
-            </button>
-          </form>
-        </div>
-      </div>
+      <img className="d-block w-100" src="https://picsum.photos/900/1200?random=1" alt="First slide" />
+      
     </div>
   );
 };

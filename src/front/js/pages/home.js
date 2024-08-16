@@ -13,7 +13,10 @@ export const Home = () => {
       e.preventDefault()
       const response = await actions.register(email, password)
       console.log(response);
+      if (response)
+        {
       navigate("/login");
+    }
     }
 
   return (
